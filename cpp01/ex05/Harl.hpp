@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 14:34:42 by sfernand          #+#    #+#             */
-/*   Updated: 2023/12/11 16:05:50 by sfernand         ###   ########.fr       */
+/*   Created: 2023/12/12 17:40:22 by sfernand          #+#    #+#             */
+/*   Updated: 2023/12/12 18:04:17 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <iostream>
+#ifndef REPLACE_HPP
+# define REPLACE_HPP
 
-int main(void)
+# include <iostream>
+# include <fstream>
+# include <string>
+# include <cstring>
+
+class Harl
 {
-    std::string str = "HI THIS IS BRAIN";
-    std::string *stingPTR = &str;
-    std::string &stringREF = str;
-    
-    std::cout << str << " = " << &str << std::endl;
-    std::cout << *stingPTR << " = " << &stingPTR <<std::endl;
-    std::cout << stringREF << " = " << &stringREF <<std::endl;
-}
+    private:
+        void debug(void);
+        void info(void);
+        void warning(void);
+        void error(void);
+    public:
+        Harl();
+        ~Harl();
+        void complain(std::string level);
+};
+
+typedef void (Harl::* harl_t) (void);
+
+#endif

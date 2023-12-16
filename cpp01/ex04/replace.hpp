@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   replace.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 14:34:42 by sfernand          #+#    #+#             */
-/*   Updated: 2023/12/11 16:05:50 by sfernand         ###   ########.fr       */
+/*   Created: 2023/12/11 15:39:30 by sfernand          #+#    #+#             */
+/*   Updated: 2023/12/12 16:13:05 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <iostream>
+#ifndef REPLACE_HPP
+# define REPLACE_HPP
 
-int main(void)
+# include <iostream>
+# include <fstream>
+# include <string>
+# include <cstring>
+
+class Replace
 {
-    std::string str = "HI THIS IS BRAIN";
-    std::string *stingPTR = &str;
-    std::string &stringREF = str;
+private:
     
-    std::cout << str << " = " << &str << std::endl;
-    std::cout << *stingPTR << " = " << &stingPTR <<std::endl;
-    std::cout << stringREF << " = " << &stringREF <<std::endl;
-}
+public:
+    Replace();
+    ~Replace();
+    std::string    replace(std::string content, std::string s1, std::string s2);
+};
+
+#endif

@@ -5,23 +5,23 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/04 14:30:53 by sfernand          #+#    #+#              #
-#    Updated: 2023/12/06 20:51:28 by sfernand         ###   ########.fr        #
+#    Created: 2023/12/12 17:39:59 by sfernand          #+#    #+#              #
+#    Updated: 2023/12/12 17:47:40 by sfernand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	megaphone
+NAME =	Harl
 
-SRC =	./megaphone.cpp
-
+SRC =	./main.cpp \
+		./Harl.cpp
 CC = c++
 
-FLAGS = -std=c++98 -Wall -Wextra -Werror 
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
 OBJS = $(SRC:.cpp=.o)
 
 $(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(FLAGS) $^ -o $(NAME)
 
 all: $(NAME)
 

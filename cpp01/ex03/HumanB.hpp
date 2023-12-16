@@ -23,11 +23,11 @@ private:
     Weapon*     _weapon;
 
 public:
-    HumanB( std::string name );
+    HumanB(std::string name);
     ~HumanB();
 
-    void    attack( void ) const;
-    void    setWeapon( Weapon& weapon );
+    void    attack(void) const;
+    void    setWeapon(Weapon& weapon);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:41:22 by sfernand          #+#    #+#             */
-/*   Updated: 2023/12/06 18:27:27 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/12/15 14:07:00 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,17 @@ std::string Contact::_getImput(std::string str, int num) const
         {
             if (num == 1 && check_num(input) == false)
             {
+                std::cin.clear();
                 std::cout << "Invalid input, your input should be integer please try again." << std::endl;
                 valid = false;
             }
             else
                 valid = true;
-        
         }
         else
         {
             std::cin.clear();
-            std::cout << "Invalid input; please try again." << std::endl;
+            std::cout << "Invalid input, please try again." << std::endl;
         }
     } 
     while (!valid);
@@ -104,6 +104,8 @@ bool    Contact::display(int index) const
     std::cout << "First Name: " << this->_firstName << std::endl;
     std::cout << "Last Name: " << this->_lastName << std::endl;
     std::cout << "Nickname: " << this->_nickName << std::endl;
+    std::cout << "Phone number: " << this->_phoneNumber << std::endl;
+    std::cout << "Darkset secret: " << this->_darksetSecret << std::endl;
     std::cout << std::endl;
     return (true);
 }

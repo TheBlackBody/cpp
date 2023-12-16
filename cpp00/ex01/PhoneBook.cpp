@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 23:20:48 by sfernand          #+#    #+#             */
-/*   Updated: 2023/12/06 18:32:41 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/12/15 14:50:29 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@ int     PhoneBook::_readImput() const
         else
         {
             std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-            std::cout << "Invalid index; please re-enter." << std::endl;
+            std::cin.ignore(2147483647, '\n');
+            std::cout << "Invalid index" << std::endl << "please re-enter." << std::endl;
+            valid = false;
         }
     }
     while (!valid);
@@ -74,7 +75,7 @@ void    PhoneBook::search(void) const
     int i = this->_readImput();
     if (this->_contacts[i].display(i) == false)
     {
-        std::cout << "Invalid index; please re-enter." << std::endl;
+        std::cout << "Invalid index" << std::endl << "please re-enter." << std::endl;
         PhoneBook::search();
     }
 }
