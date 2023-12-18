@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:57:35 by sfernand          #+#    #+#             */
-/*   Updated: 2023/12/07 03:49:02 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/12/18 11:10:17 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ class Zombie
         ~Zombie();
         Zombie* newZombie(std::string name);
         void    randomChump(std::string name);
-        void    anoncement(std::string name);
+        void    anoncement(void);
 };
 
 Zombie* newZombie(std::string name);
 void    randomChump(std::string name);
-void    anoncement(std::string name);
+void    anoncement(void);
 
 #endif

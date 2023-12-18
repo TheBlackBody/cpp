@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:57:38 by sfernand          #+#    #+#             */
-/*   Updated: 2023/12/15 14:40:02 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/12/18 11:13:37 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main( void )
     std::cin >> name;
 
     Zombie *zombi2 = newZombie(name);
-    anoncement(name);
+    zombi2->anoncement();
     delete zombi2;
 
     std::cout << "Calling randomChump()." << std::endl;
