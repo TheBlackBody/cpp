@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 02:36:04 by sfernand          #+#    #+#             */
-/*   Updated: 2023/12/18 14:36:08 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/12/29 10:18:04 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ std::ostream & operator<<(std::ostream &o, Fixed const &i)
 }
 
 bool    Fixed::operator>(const Fixed &fixed) const
-{
+{   
     return this->getRawBits() > fixed.getRawBits();
 }
 

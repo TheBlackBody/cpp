@@ -5,33 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/16 03:16:18 by sfernand          #+#    #+#             */
-/*   Updated: 2023/12/28 18:46:31 by sfernand         ###   ########.fr       */
+/*   Created: 2023/12/19 14:06:35 by sfernand          #+#    #+#             */
+/*   Updated: 2023/12/20 18:22:01 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "Fixed.hpp"
+#include "ScavTrap.hpp"
 
 int main(void)
 {
-    Fixed a;
-    Fixed const b( Fixed(5.05f) * Fixed(2) );
+    ClapTrap claptrap1;
+    ClapTrap claptrap2("Ragnar Lothbrok");
+    ClapTrap claptrap3(claptrap2);
+    ClapTrap claptrap4("Floki");
 
-    std::cout << a << std::endl;
-    std::cout << ++a << std::endl;
-    std::cout << a << std::endl;
-    std::cout << a++ << std::endl;
-    std::cout << a << std::endl;
+    claptrap1.attack("Ragnar Lothbrok");
+    claptrap2.takeDamage(100000000);
+    claptrap2.beRepaired(10);
 
-    std::cout << b << std::endl;
+    claptrap2.attack("Floki");
+    claptrap4.takeDamage(5);
+    claptrap4.beRepaired(1000);
+    claptrap4.takeDamage(1000);
+    claptrap4.beRepaired(1000);
 
-    if (a < b)
-     std::cout << "a < b" << std::endl;
-    if (a > b)
-     std::cout << "a > b" << std::endl;
+    ScavTrap guigui("GuiGui");
+    ScavTrap guigui2(guigui);
 
-    std::cout << Fixed::max( a, b ) << std::endl;
-    
+    guigui.attack("moi");
+    guigui.takeDamage(10);
+    guigui.beRepaired(10);
+    guigui.guardGate();
     return 0;
 }

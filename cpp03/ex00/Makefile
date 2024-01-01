@@ -1,0 +1,40 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/12/19 14:06:25 by sfernand          #+#    #+#              #
+#    Updated: 2023/12/19 14:11:01 by sfernand         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME =	ClapTrap
+
+SRC =	./main.cpp \
+		./ClapTrap.cpp 
+
+CC = c++
+
+FLAGS = -std=c++98 -Wall -Wextra -Werror
+
+OBJS = $(SRC:.cpp=.o)
+
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) $^ -o $(NAME)
+
+all: $(NAME)
+
+%.o: %.cpp
+	$(CC) $(FLAGS) -c $< -o $@
+
+clean:
+	rm -rf *.o
+
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
