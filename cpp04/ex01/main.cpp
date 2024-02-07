@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:05:22 by sfernand          #+#    #+#             */
-/*   Updated: 2023/12/28 13:23:25 by sfernand         ###   ########.fr       */
+/*   Updated: 2024/01/17 13:35:15 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,20 @@ int main()
     wrong->makeSound();
     l->makeSound();
     
+    std::cout << "=======================================" << std::endl;
+
+    Dog basic;
+    {
+        Dog tmp = basic;
+    }
+
+    Cat basics;
+    {
+        Cat tmp = basics;
+    }
+
+
+    std::cout << "=======================================" << std::endl;
     delete wrong;
     delete l;
 

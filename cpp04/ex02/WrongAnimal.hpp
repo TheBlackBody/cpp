@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 17:38:01 by sfernand          #+#    #+#             */
-/*   Updated: 2023/12/28 13:36:22 by sfernand         ###   ########.fr       */
+/*   Updated: 2024/01/17 13:40:09 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class WrongAnimal
 
         WrongAnimal &operator=(const WrongAnimal &wronganimal);
 
-        virtual void    makeSound(void) const;
+        void    makeSound(void) const;
         std::string getType(void) const; 
 };
 

@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:51:53 by sfernand          #+#    #+#             */
-/*   Updated: 2023/12/20 18:24:42 by sfernand         ###   ########.fr       */
+/*   Updated: 2024/01/12 10:40:35 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
     this->_attackDamage = 20;
 
     std::cout << "ScavTrap : " << this->_name << " : Constructor called" << std::endl;
+}
+
+ScavTrap::ScavTrap(const ScavTrap& copy) : ClapTrap(*this)
+{
+    std::cout << "ScavTrap copy constructor called" << std::endl;
+    *this = copy;
 }
 
 ScavTrap::~ScavTrap()
@@ -40,4 +46,17 @@ void    ScavTrap::attack(const std::string& target)
 void    ScavTrap::guardGate()
 {
     std::cout << "ScavTrap : " << this->_name << " : is now in Gate keeper mode." << std::endl;
+}
+
+ScavTrap& ScavTrap::operator=(const ScavTrap& other)
+{
+    std::cout << "ScavTrap assignation operator called" << std::endl;
+    if (this != &other)
+    {
+        _name = other._name;
+        _hitPoint = other._hitPoint;
+        _energyPoint = other._energyPoint;
+        _attackDamage = other._attackDamage;
+    }
+    return *this;
 }

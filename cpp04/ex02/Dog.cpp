@@ -6,11 +6,11 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:09:50 by sfernand          #+#    #+#             */
-/*   Updated: 2023/12/29 11:43:16 by sfernand         ###   ########.fr       */
+/*   Updated: 2024/01/17 13:37:49 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "./Dog.hpp"
 
 Dog::Dog(void) : Animal("Dog")
 {
@@ -21,7 +21,8 @@ Dog::Dog(void) : Animal("Dog")
 Dog::Dog(const Dog &copy) : Animal(copy)
 {
     std::cout << "Dog copy constructor called" << std::endl;
-    *this = copy;
+    this->_brainDog = new Brain();
+    this->_type = copy._type;
 }
 
 Dog::~Dog()
@@ -36,7 +37,8 @@ Dog &Dog::operator=(const Dog &dog)
     if (this != &dog)
     {
         this->_type = dog._type;
-        delete this->_brainDog;
+        if (this->_brainDog)
+            delete this->_brainDog;
         this->_brainDog = new Brain(*dog._brainDog);
     }
     return (*this);

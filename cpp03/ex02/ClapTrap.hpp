@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:06:57 by sfernand          #+#    #+#             */
-/*   Updated: 2023/12/20 18:05:57 by sfernand         ###   ########.fr       */
+/*   Updated: 2024/01/12 10:25:08 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class ClapTrap
     public:
         ClapTrap();
         ClapTrap(std::string name);
-        ClapTrap(const ClapTrap& other);
+        ClapTrap(const ClapTrap& copy);
         ~ClapTrap();
 
         void attack(const std::string& target);

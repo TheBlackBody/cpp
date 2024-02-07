@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:09:43 by sfernand          #+#    #+#             */
-/*   Updated: 2023/12/29 11:43:25 by sfernand         ###   ########.fr       */
+/*   Updated: 2024/01/17 13:31:56 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ Cat::Cat() : Animal("Cat")
 Cat::Cat(const Cat &copy) : Animal(copy)
 {
     std::cout << "Cat copy constructor called" << std::endl;
-    *this = copy;
+    this->_brainCat = new Brain();
+    this->_type = copy._type;
 }
 
 Cat::~Cat()
@@ -36,7 +37,8 @@ Cat &Cat::operator=(const Cat &cat)
     if (this != &cat)
     {
         this->_type = cat._type;
-        delete this->_brainCat;
+        if (this->_brainCat)
+            delete this->_brainCat;
         this->_brainCat = new Brain(*cat._brainCat);
     }
     return (*this);

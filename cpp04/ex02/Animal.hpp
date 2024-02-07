@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:25:43 by sfernand          #+#    #+#             */
-/*   Updated: 2023/12/28 12:37:31 by sfernand         ###   ########.fr       */
+/*   Updated: 2024/01/05 09:34:55 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Animal
         Animal &operator=(const Animal &animal);
 
         std::string getType() const;
-        virtual void makeSound() const;
+        virtual void makeSound() const = 0;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:06:35 by sfernand          #+#    #+#             */
-/*   Updated: 2023/12/20 18:22:01 by sfernand         ###   ########.fr       */
+/*   Updated: 2024/01/12 10:38:06 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 int main(void)
 {
     ClapTrap claptrap1;
-    ClapTrap claptrap2("Ragnar Lothbrok");
+    ClapTrap claptrap2("elena");
     ClapTrap claptrap3(claptrap2);
-    ClapTrap claptrap4("Floki");
+    ClapTrap claptrap4("phynicia");
 
-    claptrap1.attack("Ragnar Lothbrok");
+    claptrap1.attack("elena");
     claptrap2.takeDamage(100000000);
     claptrap2.beRepaired(10);
 
-    claptrap2.attack("Floki");
+    claptrap2.attack("phynicia");
     claptrap4.takeDamage(5);
     claptrap4.beRepaired(1000);
     claptrap4.takeDamage(1000);
@@ -32,7 +32,7 @@ int main(void)
     ScavTrap guigui("GuiGui");
     ScavTrap guigui2(guigui);
 
-    guigui.attack("moi");
+    guigui.attack("sasha");
     guigui.takeDamage(10);
     guigui.beRepaired(10);
     guigui.guardGate();

@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:06:35 by sfernand          #+#    #+#             */
-/*   Updated: 2023/12/29 17:57:38 by sfernand         ###   ########.fr       */
+/*   Updated: 2024/01/12 10:37:52 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main(void)
 {
     ClapTrap claptrap1;
-    ClapTrap claptrap2("Blob");
+    ClapTrap claptrap2("elena");
     ClapTrap claptrap3(claptrap2);
     ClapTrap claptrap4("Floki");
 
