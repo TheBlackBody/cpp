@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 10:41:38 by sfernand          #+#    #+#             */
-/*   Updated: 2024/02/11 17:23:08 by sfernand         ###   ########.fr       */
+/*   Updated: 2024/02/12 14:31:30 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,38 @@ class Out_OF_Range : public std::exception
         }
 };
 
+class Non_Displayable : public std::exception
+{
+    public :
+        virtual const char *what() const throw()
+        {
+        	return "Non displayable";
+    	}
+};
+
+class Impossible : public std::exception
+{
+	public :
+		virtual const char *what() const throw()
+		{
+    		return "Impossible";
+		}
+};
+
+class Not_A_Number : public std::exception
+{
+	public :
+		virtual const char *what() const throw()
+		{
+    		return "nan";
+		}
+};
+
 char ft_stoc(std::string str);
 int ft_stoi(std::string str);
 float ft_stof(std::string str);
 double ft_stod(std::string str);
 bool    check_num(std::string& str);
+int ft_precision(std::string str);
 
 #endif

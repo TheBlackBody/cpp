@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 13:27:15 by sfernand          #+#    #+#             */
-/*   Updated: 2024/02/11 16:56:38 by sfernand         ###   ########.fr       */
+/*   Updated: 2024/02/12 11:06:40 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ class ScalarConverte
 		void setI(std::string str);
 		void setF(std::string str);
 		void setD(std::string str);
-
 };
 
 #endif

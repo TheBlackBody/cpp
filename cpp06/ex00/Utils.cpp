@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 10:41:28 by sfernand          #+#    #+#             */
-/*   Updated: 2024/02/11 17:22:21 by sfernand         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:35:19 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,81 @@ int ft_stoi(std::string str)
             std::cout << "Exception caught: " << e.what() << std::endl;
             return (0);
         }
+        if (str[i] == '.')
+            break;
         num = num * 10 + (str[i] - '0');
         ++i;
     }
     return (num * sign);
+}
+
+float   ft_stof(std::string str)
+{
+    size_t i = 0;
+    int sign = 1;
+    float result = 0.0f;
+    bool decimalPart = false;
+    float decimalFactor = 0.1f;
+    
+    while (i < str.length() && std::isspace(str[i]))
+    {
+        ++i;
+    }
+    if (i < str.length() && (str[i] == '+' || str[i] == '-'))
+    {
+        sign = (str[i] == '-') ? -1 : 1;
+        ++i;
+    }
+    while (i < str.length() && (std::isdigit(str[i]) || (str[i] == '.' && !decimalPart))) {
+        if (str[i] == '.') {
+            decimalPart = true;
+        } else {
+            if (decimalPart) {
+                result = result + static_cast<float>(str[i] - '0') * decimalFactor;
+                decimalFactor *= 0.1f;
+            } else {
+                result = result * 10.0f + static_cast<float>(str[i] - '0');
+            }
+        }
+        ++i;
+    }
+    return (result * sign);
+}
+
+double   ft_stod(std::string str)
+{
+    size_t i = 0;
+    double result = 0.0;
+    int sign = 1;
+    bool decimalPart = false;
+    double decimalFactor = 0.1;
+    
+    while (i < str.length() && std::isspace(str[i]))
+    {
+        ++i;
+    }
+    if (i < str.length() && (str[i] == '+' || str[i] == '-'))
+    {
+        sign = (str[i] == '-') ? -1 : 1;
+        ++i;
+    }
+   while (i < str.length() && (std::isdigit(str[i]) || (str[i] == '.' && !decimalPart)))
+   {
+        if (str[i] == '.') {
+            decimalPart = true;
+        } else {
+            if (decimalPart) {
+                result = result + static_cast<double>(str[i] - '0') * decimalFactor;
+                decimalFactor *= 0.1;
+            } else {
+                result = result * 10.0 + static_cast<double>(str[i] - '0');
+            }
+        }
+        ++i;
+        if (str[i] == 'f')
+            i++;
+    }
+    return (result * sign);
 }
 
 bool    check_num(std::string& str)
@@ -60,7 +131,30 @@ bool    check_num(std::string& str)
     for (size_t i = 0; i < str.length(); i++)
     {
         if (!std::isdigit(str[i]))
+        {
+            if (str[i] == '.' || str[i] == '-' || str[i] == 'f')
+                return (true);
             return (false);
+        }
     }
     return (true);
+}
+
+int ft_precision(std::string str)
+{
+    int i = 0;
+    int a = 0;
+    while (str[i] && str[i] != '.')
+        i++;
+    if (str[i] == '.')
+        i++;
+    while (str[i])
+    {
+        if (std::isdigit(str[i]))
+            a++;
+        i++;
+    }
+    if (a == 0)
+        return (1);
+    return (a);
 }
