@@ -6,20 +6,11 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 10:41:28 by sfernand          #+#    #+#             */
-/*   Updated: 2024/02/12 15:35:19 by sfernand         ###   ########.fr       */
+/*   Updated: 2024/02/12 16:53:11 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Utils.hpp"
-
-char ft_stoc(std::string str)
-{
-    if (str.length() > 1)
-        return (-1);
-    const char *c = str.c_str();
-    char ch = c[0];
-    return (ch);
-}
 
 int ft_stoi(std::string str)
 {

@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 10:41:38 by sfernand          #+#    #+#             */
-/*   Updated: 2024/02/12 14:31:30 by sfernand         ###   ########.fr       */
+/*   Updated: 2024/02/12 16:53:24 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ class Not_A_Number : public std::exception
 		}
 };
 
-char ft_stoc(std::string str);
 int ft_stoi(std::string str);
 float ft_stof(std::string str);
 double ft_stod(std::string str);

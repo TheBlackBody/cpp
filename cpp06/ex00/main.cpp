@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 11:04:22 by sfernand          #+#    #+#             */
-/*   Updated: 2024/02/12 15:58:01 by sfernand         ###   ########.fr       */
+/*   Updated: 2024/02/12 17:07:15 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,23 @@ int main(int ac, char **av)
         return (0);
     }
     std::string str = av[1];
-    int i = ft_stoi(str);
-    std::cout << "________________________________________________________" << std::endl;
-    char c;
     bool error = false;
+    ScalarConverte convert(str);
+    std::cout << "________________________________________________________" << std::endl;
     if (check_num(str))
     {
-        c = i;
         try
         {
-            if ((c < 32 || c >= 127) && c != -1)
-            { 
+            if ((convert.getC() < 32 || convert.getC() >= 127) && convert.getC() != -1)
+            {
                 error = true;
                 throw Non_Displayable();
             }
         }
-        catch (const Non_Displayable& e)
+        catch(const Non_Displayable& e)
         {
             std::cout << "char = " << e.what() << std::endl;
-        }
+        } 
     }
     else 
     {
@@ -56,32 +54,25 @@ int main(int ac, char **av)
         }
     }
     if (error == false)
-        std::cout << "char = " << c << std::endl;
+        std::cout << "char = " << convert.getC() << std::endl;
     std::cout << "________________________________________________________" << std::endl;
     if (check_num(str))
-    {
-        i = ft_stoi(str);
-        std::cout << "int = " << i << std::endl;
-    }
-    else 
+        std::cout << "int = " << convert.getI() << std::endl;
+    else
     {
         try
         {
             if (!check_num(str))
                 throw Impossible();
         }
-        catch(const Impossible& e)
+        catch (const Impossible& e)
         {
             std::cout << "int = " << e.what() << std::endl;
         }
-        
     }
-    std::cout << "________________________________________________________" << std::endl;  
+    std::cout << "________________________________________________________" << std::endl;
     if (check_num(str))
-    {
-        float f = ft_stof(str);
-        std::cout << "float = " << std::fixed << std::setprecision(ft_precision(str)) << f << "f" << std::endl;
-    }
+        std::cout << "float = " << std::fixed << std::setprecision(ft_precision(str)) << convert.getF() << "f" << std::endl;
     else 
     {
         try
@@ -96,11 +87,93 @@ int main(int ac, char **av)
         
     }
     std::cout << "________________________________________________________" << std::endl;
- if (check_num(str))
+    if (check_num(str))
+        std::cout << "double = " << std::fixed << std::setprecision(ft_precision(str)) << convert.getD() << std::endl;
+    else 
     {
-        double d = ft_stod(str);
-        std::cout << "double = " << std::fixed << std::setprecision(ft_precision(str)) << d << std::endl;
+        try
+        {
+            if (!check_num(str))
+                throw Not_A_Number();
+        }
+        catch(const Not_A_Number& e)
+        {
+            std::cout << "float = " << e.what() << std::endl;
+        }
+        
     }
+    std::cout << "________________________________________________________" << std::endl;
+    std::cout << std::endl;
+//copy part
+    std::cout << std::endl;
+    ScalarConverte copy(convert);
+    std::cout << "________________________________________________________" << std::endl;
+    if (check_num(str))
+    {
+        try
+        {
+            if ((copy.getC() < 32 || copy.getC() >= 127) && copy.getC() != -1)
+            {
+                error = true;
+                throw Non_Displayable();
+            }
+        }
+        catch(const Non_Displayable& e)
+        {
+            std::cout << "char = " << e.what() << std::endl;
+        } 
+    }
+    else 
+    {
+        try
+        {
+            if (!check_num(str))
+            {
+                error = true;
+                throw Impossible();
+            }
+        }
+        catch(const Impossible& e)
+        {
+            std::cout << "char = " << e.what() << std::endl;
+        }
+    }
+    if (error == false)
+        std::cout << "char = " << copy.getC() << std::endl;
+    std::cout << "________________________________________________________" << std::endl;
+    if (check_num(str))
+        std::cout << "int = " << copy.getI() << std::endl;
+    else
+    {
+        try
+        {
+            if (!check_num(str))
+                throw Impossible();
+        }
+        catch (const Impossible& e)
+        {
+            std::cout << "int = " << e.what() << std::endl;
+        }
+    }
+    std::cout << "________________________________________________________" << std::endl;
+    if (check_num(str))
+        std::cout << "float = " << std::fixed << std::setprecision(ft_precision(str)) << copy.getF() << "f" << std::endl;
+    else 
+    {
+        try
+        {
+            if (!check_num(str))
+                throw Not_A_Number();
+        }
+        catch(const Not_A_Number& e)
+        {
+            std::cout << "float = " << e.what() << std::endl;
+        }
+        
+    }
+    std::cout << "________________________________________________________" << std::endl;
+    if (check_num(str))
+        std::cout << "double = " << std::fixed << std::setprecision(ft_precision(str)) << copy.getD() << std::endl;
     else 
     {
         try
