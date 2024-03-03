@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 13:27:15 by sfernand          #+#    #+#             */
-/*   Updated: 2024/02/12 16:37:47 by sfernand         ###   ########.fr       */
+/*   Updated: 2024/02/13 10:02:31 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,18 @@
 class ScalarConverte
 {
 	private:
-		std::string _str;
-		char _c;
-		int _i;
-		float _f;
-		double _d;
-	public:
-		ScalarConverte(std::string str);
+		ScalarConverte();
 		ScalarConverte(const ScalarConverte &copy);
-		~ScalarConverte();
-	
 		ScalarConverte &operator=(const ScalarConverte &scalar);
+		
+	public:
+		~ScalarConverte();
 
-		void setC(std::string str);
-		void setI(std::string str);
-		void setF(std::string str);
-		void setD(std::string str);
-
-		char getC();
-		int	getI();
-		float getF();
-		double getD();
+		static void Convert(std::string str);
+		static void ConvertC(std::string str);
+		static void ConvertI(std::string str);
+		static void ConvertF(std::string str);
+		static void ConvertD(std::string str);
 };
 
 #endif

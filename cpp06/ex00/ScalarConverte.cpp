@@ -6,83 +6,221 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 13:27:01 by sfernand          #+#    #+#             */
-/*   Updated: 2024/02/12 16:53:26 by sfernand         ###   ########.fr       */
+/*   Updated: 2024/03/03 16:22:41 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "./ScalarConverte.hpp"
+#include <string>
 
-ScalarConverte::ScalarConverte(std::string str) : _str(str)
+
+
+ScalarConverte::ScalarConverte()
 {
-	std::cout << "<ScalarConverte> Default constructor called" << std::endl;
-	setC(str);
-	setI(str);
-	setF(str);
-	setD(str);
 }
 
 ScalarConverte::ScalarConverte(const ScalarConverte &copy)
 {
-	std::cout << "<ScalarConverte> Copy constructor called" << std::endl;
 	*this = copy;
 }
 
 ScalarConverte::~ScalarConverte()
 {
-	std::cout << "<ScalarConverte> Destructor called" << std::endl;
-}
-
-void	ScalarConverte::setC(std::string str)
-{
-	this->_c = ft_stoi(str);
-}
-
-void	ScalarConverte::setI(std::string str)
-{
-	this->_i = ft_stoi(str);
-}
-
-void	ScalarConverte::setF(std::string str)
-{
-	this->_f = ft_stoi(str);
-}
-
-void	ScalarConverte::setD(std::string str)
-{
-	this->_d = ft_stoi(str);
-}
-
-char	ScalarConverte::getC()
-{
-	return (this->_c);
-}
-
-int	ScalarConverte::getI()
-{
-	return (this->_i);
-}
-
-float	ScalarConverte::getF()
-{
-	return (this->_f);
-}
-
-double	ScalarConverte::getD()
-{
-	return (this->_d);
 }
 
 ScalarConverte &ScalarConverte::operator=(const ScalarConverte &scalar)
 {
-    std::cout << "operator assignement called" << std::endl;
-    if (this != &scalar)
+	if (this != &scalar)
+	{
+	}
+	return (*this);
+}
+
+void	ScalarConverte::Convert(std::string str)
+{   
+	ConvertC(str);
+	ConvertI(str);
+	ConvertF(str);
+	ConvertD(str);
+}
+
+void	ScalarConverte::ConvertC(std::string str)
+{
+	bool error = false;
+    std::cout << "________________________________________________________" << std::endl;
+	char c = ft_stoi(str);
+    if (check_num(str))
     {
-    	_str = scalar._str;
-    	_c = scalar._c;
-    	_i = scalar._i;
-    	_f = scalar._f;
-    	_d = scalar._d;
+        if ((static_cast<int>(str.c_str()[0]) > 31 && static_cast<int>(str.c_str()[0]) < 127) && str.length() == 1 && (static_cast<int>(str.c_str()[0]) == 0 && static_cast<int>(str.c_str()[0]) > 9))
+        {
+            std::cout << "char = " << str << std::endl;
+            return;
+        }
+        try
+        {
+            if ((((c < 32 || c >= 127) && c != -1) && str != "-") || (c >= 127 && c < 0))
+            {
+                error = true;
+                throw Non_Displayable();
+            }
+        }
+        catch(const Non_Displayable& e)
+        {
+            std::cout << "char = " << e.what() << std::endl;
+        } 
     }
-    return (*this);
+    else 
+    {   
+        try
+        {
+            if ((str.c_str()[0] > 31 && str.c_str()[0] < 127) && str.length() == 1)
+            {
+                std::cout << "char = " << str << std::endl;
+                return;
+            }
+            else if (!check_num(str) || str == "f" || str == ".")
+            {
+                error = true;
+                throw Impossible();
+            }
+        }
+        catch(const Impossible& e)
+        {
+            std::cout << "char = " << e.what() << std::endl;
+        }
+    }
+    try
+    {
+        if (str == "-1" || str == "-1f" || (c >= 127 && c < 0))
+        {
+            throw Non_Displayable();
+            return;
+        }
+    }
+    catch(const Non_Displayable& e)
+    {
+        std::cout << "char = " << e.what() << std::endl;
+        return;
+    }
+    if (error == false)
+        std::cout << "char = " << c << std::endl;
+}
+
+void	ScalarConverte::ConvertI(std::string str)
+{
+    std::cout << "________________________________________________________" << std::endl;
+	int i = ft_stoi(str);
+    if (check_num(str))
+    {
+        try
+        {
+            if ((static_cast<int>(str.c_str()[0]) > 31 && static_cast<int>(str.c_str()[0]) < 127) && str.length() == 1 && !check_num(str))
+            {
+                std::cout << "int = " << static_cast<int>(str.c_str()[0]) << std::endl;
+                return;
+            }
+            if (str == "f" || str == ".")
+                throw Impossible();
+        }
+        catch (const Impossible& e)
+        {
+            std::cout << "int = " << e.what() << std::endl;
+            return;
+        }
+        std::cout << "int = " << i << std::endl;
+    }
+    else
+    {
+        try
+        {
+            if ((static_cast<int>(str.c_str()[0]) > 31 && static_cast<int>(str.c_str()[0]) < 127) && str.length() == 1)
+            {
+                std::cout << "int = " << static_cast<int>(str.c_str()[0]) << std::endl;
+                return;
+            }
+            if (!check_num(str) || str == "f")
+                throw Impossible();
+        }
+        catch (const Impossible& e)
+        {
+            std::cout << "int = " << e.what() << std::endl;
+        }
+    }
+}
+
+void	ScalarConverte::ConvertF(std::string str)
+{
+	float f = ft_stof(str);
+    std::cout << "________________________________________________________" << std::endl;
+    if (((static_cast<int>(str.c_str()[0]) > 31 && static_cast<int>(str.c_str()[0]) < 127) && str.length() == 1 ) || check_num(str))
+    {
+        try
+        {
+            if (str == ".")
+                throw Not_A_Number();
+        }
+        catch(const Not_A_Number& e)
+        {
+            std::cout << "float = " << e.what() << std::endl;
+            return;
+        }
+        if (static_cast<int>(str.c_str()[0]) > 31 && static_cast<int>(str.c_str()[0]) < 127 &&  !check_num(str) && str.length() == 1)
+        {
+            std::cout << "floatd = " << std::fixed << std::setprecision(ft_precision(str)) << static_cast<float>(str.c_str()[0]) << "f" << std::endl;
+        }
+        else 
+            std::cout << "float = " << std::fixed << std::setprecision(ft_precision(str)) << f << "f" << std::endl;
+    }
+    else 
+    {
+        try
+        {
+            if (!check_num(str) || str == ".")
+                throw Not_A_Number();
+        }
+        catch(const Not_A_Number& e)
+        {
+            std::cout << "float = " << e.what() << std::endl;
+        }
+    }
+}
+
+void	ScalarConverte::ConvertD(std::string str)
+{
+	double d = ft_stod(str);
+	std::cout << "________________________________________________________" << std::endl;
+    if (((static_cast<int>(str.c_str()[0]) > 31 && static_cast<int>(str.c_str()[0]) < 127) && str.length() == 1 ) || check_num(str))
+    {
+        try
+        {
+            if (str == ".")
+                throw Not_A_Number();
+        }
+        catch(const Not_A_Number& e)
+        {
+            std::cout << "double = " << e.what() << std::endl;
+            return;
+        }
+        if (static_cast<int>(str.c_str()[0]) > 31 && static_cast<int>(str.c_str()[0]) < 127 && !check_num(str) && str.length() == 1)
+        {
+            std::cout << "double = " << std::fixed << std::setprecision(ft_precision(str)) << static_cast<double>(str.c_str()[0]) << std::endl;
+        }
+        else 
+            std::cout << "double = " << std::fixed << std::setprecision(ft_precision(str)) << d << std::endl;
+    }
+    else 
+    {
+        try
+        {
+            if (!check_num(str) || str == ".")
+                throw Not_A_Number();
+        }
+        catch(const Not_A_Number& e)
+        {
+            std::cout << "double = " << e.what() << std::endl;
+        }
+        
+    }
+    std::cout << "________________________________________________________" << std::endl;
 }

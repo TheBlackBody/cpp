@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 10:41:28 by sfernand          #+#    #+#             */
-/*   Updated: 2024/02/12 16:53:11 by sfernand         ###   ########.fr       */
+/*   Updated: 2024/03/03 16:14:08 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int ft_stoi(std::string str)
         catch (const Out_OF_Range& e)
         {
             std::cout << "Exception caught: " << e.what() << std::endl;
-            return (0);
+            return (2147483647);
         }
-        if (str[i] == '.')
+        if (str[i] == '.' || (str[i] == 'f' && i > 1))
             break;
         num = num * 10 + (str[i] - '0');
         ++i;

@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 10:41:38 by sfernand          #+#    #+#             */
-/*   Updated: 2024/02/12 16:53:24 by sfernand         ###   ########.fr       */
+/*   Updated: 2024/03/03 11:44:40 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <string>
 # include <iostream>
 # include <iomanip>
+# include <cstdlib>
 
 class Out_OF_Range : public std::exception
 {
