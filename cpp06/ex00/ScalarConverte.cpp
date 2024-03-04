@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 13:27:01 by sfernand          #+#    #+#             */
-/*   Updated: 2024/03/03 16:22:41 by sfernand         ###   ########.fr       */
+/*   Updated: 2024/03/04 10:37:39 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ void	ScalarConverte::ConvertC(std::string str)
 {
 	bool error = false;
     std::cout << "________________________________________________________" << std::endl;
-	char c = ft_stoi(str);
+	int i = ft_stoi(str);
+    if ((i < 0 && str.c_str()[0] != '-') || (i > 0 && str.c_str()[0] == '-'))
+        return;
+    char c = ft_stoi(str);
     if (check_num(str))
     {
         if ((static_cast<int>(str.c_str()[0]) > 31 && static_cast<int>(str.c_str()[0]) < 127) && str.length() == 1 && (static_cast<int>(str.c_str()[0]) == 0 && static_cast<int>(str.c_str()[0]) > 9))
@@ -92,7 +95,7 @@ void	ScalarConverte::ConvertC(std::string str)
     }
     try
     {
-        if (str == "-1" || str == "-1f" || (c >= 127 && c < 0))
+        if (str == "-1" || str == "-1f" || (c >= 127 && c < 0) || str == "2147483647" || str == "-2147483648")
         {
             throw Non_Displayable();
             return;
@@ -111,6 +114,8 @@ void	ScalarConverte::ConvertI(std::string str)
 {
     std::cout << "________________________________________________________" << std::endl;
 	int i = ft_stoi(str);
+    if ((i < 0 && str.c_str()[0] != '-') || (i > 0 && str.c_str()[0] == '-'))
+        return;
     if (check_num(str))
     {
         try
